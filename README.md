@@ -1,7 +1,8 @@
 <div align = center>
 
-<img src=".github/resources/matter.gif" width="750" height="300" alt="banner">
+<img src=".github/resources/matter.gif" width="200" height="200" alt="banner">
 
+<br>
 <br>
 
 <!-- ![Badge Workflow] -->
@@ -23,11 +24,9 @@ Matter is the perfect ticket bot for any Discord server, offering a wide range o
 <!-- **[<kbd> <br> Install <br> </kbd>][Install]**
 **[<kbd> <br> Quick Start <br> </kbd>][Quick Start]**
 **[<kbd> <br> Configure <br> </kbd>][Configure]**
-**[<kbd> <br> Contribute <br> </kbd>][Contribute]** -->
+**[<kbd> <br> Contribute <br> </kbd>][Contribute]**
 
----
-
-<br>
+<br> -->
 
 </div>
 
