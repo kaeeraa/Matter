@@ -1,6 +1,6 @@
 <div align = center>
 
-<img src=".github/resources/matter.gif" width="400" height="300" alt="banner">
+<img src=".github/resources/matter.gif" width="200" height="200" alt="banner">
 
 <br>
 
