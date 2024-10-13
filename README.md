@@ -24,11 +24,9 @@ Matter is the perfect ticket bot for any Discord server, offering a wide range o
 <!-- **[<kbd> <br> Install <br> </kbd>][Install]**
 **[<kbd> <br> Quick Start <br> </kbd>][Quick Start]**
 **[<kbd> <br> Configure <br> </kbd>][Configure]**
-**[<kbd> <br> Contribute <br> </kbd>][Contribute]** -->
+**[<kbd> <br> Contribute <br> </kbd>][Contribute]**
 
----
-
-<br>
+<br> -->
 
 </div>
 
