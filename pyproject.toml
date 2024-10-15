@@ -18,7 +18,7 @@ license = "GPL-3.0-only"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.12,<3.14"
+python = ">=3.12.6,<3.14"
 hikari = "^2.1.0"
 black = "^24.10.0"
 python-dotenv = "^1.0.1"
