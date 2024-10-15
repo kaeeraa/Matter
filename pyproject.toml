@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "matter"
+version = "0.1.0"
+description = "Matter is a free, open-source and all-in-one ticket bot for Discord"
+repository = "https://github.com/kaeeraa/Matter"
+keywords = ["discord", "bot", "ticket", "bot", "matter"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: GPL-3.0 License",
+    "Programming Language :: Python :: 3.12"
+]
+
+authors = ["kaeeraa <kaeeraa@nebula-nook.ru>"]
+maintainers = ["kaeeraa <kaeeraa@nebula-nook.ru>"]
+license = "GPL-3.0-only"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.14"
+hikari = "^2.1.0"
+black = "^24.10.0"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/kaeeraa/Matter/issues"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
