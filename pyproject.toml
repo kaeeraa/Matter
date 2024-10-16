@@ -19,10 +19,25 @@ packages = [{include = "instances"}]
 
 [tool.poetry.dependencies]
 python = ">=3.12.6,<3.14"
-hikari = "^2.1.0"
-black = "^24.10.0"
+hikari = {extras = ["speedups"], version = "^2.1.0"}
 python-dotenv = "^1.0.1"
 loguru = "^0.7.2"
+uvloop = "^0.21.0"
+hikari-arc = "^1.4.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+isort = "^5.13.2"
+flake8 = "^7.1.1"
+
+[tool.black]
+target-version = ["py312"]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+line_length = 120
+
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/kaeeraa/Matter/issues"
