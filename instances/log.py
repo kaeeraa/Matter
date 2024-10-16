@@ -1,7 +1,21 @@
-from loguru import logger
-from sys import argv, stdout
-from random import randbytes
+"""
+This module contains the logging setup logic.
+
+The logging is done using the loguru library. A custom format is used to print
+the date and time, log level, module name, function name, line number and log
+message. The log format is as follows:
+
+<green>{time:HH:mm:ss:SSS}</green> | <level>{level}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>
+
+The log level is set to DEBUG if the "-V" or "--verbose" flag is passed on the
+command line, otherwise it is set to INFO.
+
+"""
 from datetime import datetime
+from random import randbytes
+from sys import argv, stdout
+
+from loguru import logger
 
 # Remove all existing handlers
 logger.remove()
@@ -14,6 +28,7 @@ logger.level("SUCCESS", color="<green>", icon="💚")
 logger.level("WARNING", color="<yellow>", icon="💛")
 logger.level("ERROR", color="<red>", icon="💔")
 logger.level("CRITICAL", color="<red>", icon="💔")
+
 # Add a file handler with specific configurations
 logger.add(
     sink=f"logs/{datetime.now().strftime('%Y-%m-%d')}_{randbytes(n=4).hex()}.log",
@@ -21,9 +36,7 @@ logger.add(
     "<level>{level}</level> | "
     "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
     "<level>{message}</level>",
-    level=(
-        "TRACE" if any(arg in ["-V", "--verbose"] for arg in argv) else "DEBUG"
-    ),  # Set level based on verbosity
+    level=("TRACE" if any(arg in ["-V", "--verbose"] for arg in argv) else "DEBUG"),  # Set level based on verbosity
     serialize=True,  # Enable log serialization
     colorize=False,  # Disable colorization in file logs
     rotation="10 MB",  # Rotate logs after reaching 10 MB
@@ -38,7 +51,5 @@ logger.add(
     "<level>{level}</level> | "
     "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
     "<level>{message}</level>",
-    level=(
-        "TRACE" if any(arg in ["-V", "--verbose"] for arg in argv) else "DEBUG"
-    ),  # Set level based on verbosity
+    level=("TRACE" if any(arg in ["-V", "--verbose"] for arg in argv) else "DEBUG"),  # Set level based on verbosity
 )
