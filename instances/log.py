@@ -5,12 +5,15 @@ The logging is done using the loguru library. A custom format is used to print
 the date and time, log level, module name, function name, line number and log
 message. The log format is as follows:
 
-<green>{time:HH:mm:ss:SSS}</green> | <level>{level}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>
+<green>{time:HH:mm:ss:SSS}</green> |
+<level>{level.icon} {level} {level.icon}</level> |
+<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>
 
 The log level is set to DEBUG if the "-V" or "--verbose" flag is passed on the
 command line, otherwise it is set to INFO.
 
 """
+
 from datetime import datetime
 from random import randbytes
 from sys import argv, stdout
@@ -49,6 +52,7 @@ logger.add(
     sink=stdout,
     format="<green>{time:HH:mm:ss:SSS}</green> | "
     "<level>{level}</level> | "
+    "{level.icon}  | "
     "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
     "<level>{message}</level>",
     level=("TRACE" if any(arg in ["-V", "--verbose"] for arg in argv) else "DEBUG"),  # Set level based on verbosity
