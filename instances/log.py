@@ -32,14 +32,22 @@ logger.level("WARNING", color="<yellow>", icon="💛")
 logger.level("ERROR", color="<red>", icon="💔")
 logger.level("CRITICAL", color="<red>", icon="💔")
 
+if any(arg in ["-V", "--verbose"] for arg in argv):
+    logLevel = "DEBUG"
+elif any(arg in ["-VV", "--vomit"] for arg in argv):
+    logLevel = "TRACE"
+else:
+    logLevel = "INFO"
+
 # Add a file handler with specific configurations
 logger.add(
+    # Generate a unique log filename ({time}_xxxxxxxx.log)
     sink=f"logs/{datetime.now().strftime('%Y-%m-%d')}_{randbytes(n=4).hex()}.log",
     format="<green>{time:HH:mm:ss:SSS}</green> | "
     "<level>{level}</level> | "
     "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
     "<level>{message}</level>",
-    level=("TRACE" if any(arg in ["-V", "--verbose"] for arg in argv) else "DEBUG"),  # Set level based on verbosity
+    level=logLevel,  # Set level based on verbosity
     serialize=True,  # Enable log serialization
     colorize=False,  # Disable colorization in file logs
     rotation="10 MB",  # Rotate logs after reaching 10 MB
@@ -55,5 +63,5 @@ logger.add(
     "{level.icon}  | "
     "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
     "<level>{message}</level>",
-    level=("TRACE" if any(arg in ["-V", "--verbose"] for arg in argv) else "DEBUG"),  # Set level based on verbosity
+    level=logLevel,  # Set level based on verbosity
 )
