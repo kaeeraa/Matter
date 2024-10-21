@@ -17,8 +17,10 @@ command line, otherwise it is set to INFO.
 from datetime import datetime
 from random import randbytes
 from sys import stdout
-from instances.args import args
+
 from loguru import logger
+
+from instances.args import args
 
 # Remove all existing handlers
 logger.remove()
