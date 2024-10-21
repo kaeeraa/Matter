@@ -16,8 +16,8 @@ command line, otherwise it is set to INFO.
 
 from datetime import datetime
 from random import randbytes
-from sys import argv, stdout
-
+from sys import stdout
+from instances.args import args
 from loguru import logger
 
 # Remove all existing handlers
@@ -32,9 +32,9 @@ logger.level("WARNING", color="<yellow>", icon="💛")
 logger.level("ERROR", color="<red>", icon="💔")
 logger.level("CRITICAL", color="<red>", icon="💔")
 
-if any(arg in ["-V", "--verbose"] for arg in argv):
+if args.verbose:
     logLevel = "DEBUG"
-elif any(arg in ["-VV", "--vomit"] for arg in argv):
+elif args.vomit:
     logLevel = "TRACE"
 else:
     logLevel = "INFO"
