@@ -17,7 +17,7 @@ if name != "nt":
     except ImportError:
         logger.warning("Failed to import uvloop, using default event loop policy")
 
-logger.trace("Starting Matter")
+logger.success("Starting Matter")
 
 logger.trace("Including slash commands")
 client.include(command=ping)
@@ -27,4 +27,4 @@ bot.listen(StartedEvent)(presence)
 
 logger.trace("Starting bot")
 bot.run()
-logger.trace("Matter has stopped!")
+logger.success("Matter has stopped!")
