@@ -1,36 +1,48 @@
 [tool.poetry]
 name = "matter"
-version = "0.1.0"
+version = "0.1.1"
 description = "Matter is a free, open-source and all-in-one ticket bot for Discord"
-license = "GPL-3.0-only"
-authors = ["kaeeraa <kaeeraa@nebula-nook.ru>"]
-maintainers = ["kaeeraa <kaeeraa@nebula-nook.ru>"]
+license = "GPL-3.0-Only"
+authors = [ "kaeeraa <kaeeraa@nebula-nook.ru>" ]
+maintainers = [ "kaeeraa <kaeeraa@nebula-nook.ru>" ]
 repository = "https://github.com/kaeeraa/Matter"
 readme = "README.md"
 keywords = ["discord", "bot", "ticket", "bot", "matter"]
 classifiers = [
     "Development Status :: 3 - Alpha",
+
     "Intended Audience :: Developers",
     "Topic :: Software Development :: Libraries :: Python Modules",
+
     "License :: OSI Approved :: GPL-3.0 License",
+
     "Programming Language :: Python :: 3.12"
 ]
-packages = [{include = "instances"}]
+packages = [
+    { include = "helpers" },
+    { include = "commands" },
+    { include = "instances" },
+    { include = "passive" },
+]
 
 [tool.poetry.dependencies]
 python = ">=3.12.6,<3.14"
-hikari = {extras = ["speedups"], version = "^2.1.0"}
-python-dotenv = "^1.0.1"
-loguru = "^0.7.2"
-uvloop = "^0.21.0"
-hikari-arc = "^1.4.0"
-flake8-bugbear = "^24.8.19"
-pylint = "^3.3.1"
+hikari = { version = ">=2.0.0,<3.0.0", extras = ["speedups"]}
+hikari-arc = ">=1.4.0,<2.0.0"
+loguru = ">=0.7.0,<1.0.0"
+python-dotenv = ">=1.0.0,<2.0.0"
+
+uvloop = { version = ">=0.17.0,<1.0.0", optional = true }
+
+[tool.poetry.extras]
+uvloop = ["uvloop"]
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.10.0"
 isort = "^5.13.2"
 flake8 = "^7.1.1"
+flake8-bugbear = "^24.8.19"
+pylint = "^3.3.1"
 
 [tool.black]
 target-version = ["py312"]
@@ -44,6 +56,7 @@ line_length = 120
 max-line-length = "120"
 
 [tool.poetry.urls]
+"Source" = "https://github.com/kaeeraa/Matter"
 "Bug Tracker" = "https://github.com/kaeeraa/Matter/issues"
 
 [build-system]
