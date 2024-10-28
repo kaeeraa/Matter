@@ -10,11 +10,10 @@ on:
     branches: [ "main" ]
 
 permissions:
-  contents: read
+    contents: write
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
