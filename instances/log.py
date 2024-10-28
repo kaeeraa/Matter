@@ -35,11 +35,11 @@ logger.level("ERROR", color="<red>", icon="💔")
 logger.level("CRITICAL", color="<red>", icon="💔")
 
 if args.verbose:
-    logLevel = "DEBUG"
+    LEVEL = "DEBUG"
 elif args.vomit:
-    logLevel = "TRACE"
+    LEVEL = "TRACE"
 else:
-    logLevel = "INFO"
+    LEVEL = "INFO"
 
 # Add a file handler with specific configurations
 logger.add(
@@ -49,7 +49,7 @@ logger.add(
     "<level>{level}</level> | "
     "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
     "<level>{message}</level>",
-    level=logLevel,  # Set level based on verbosity
+    level=LEVEL,  # Set level based on verbosity
     serialize=True,  # Enable log serialization
     colorize=False,  # Disable colorization in file logs
     rotation="10 MB",  # Rotate logs after reaching 10 MB
@@ -65,5 +65,5 @@ logger.add(
     "{level.icon}  | "
     "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
     "<level>{message}</level>",
-    level=logLevel,  # Set level based on verbosity
+    level=LEVEL,  # Set level based on verbosity
 )

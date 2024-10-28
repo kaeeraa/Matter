@@ -1,3 +1,5 @@
+"""This module contains the main entry point for the bot."""
+
 from asyncio import set_event_loop_policy
 from os import name
 

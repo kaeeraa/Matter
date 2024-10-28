@@ -1,3 +1,5 @@
+"""This module contains the argument parser for the bot."""
+
 from argparse import ArgumentParser
 
 parser = ArgumentParser(
