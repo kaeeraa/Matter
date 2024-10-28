@@ -1,3 +1,5 @@
+"""This module contains the presence update logic."""
+
 from asyncio import sleep
 
 from hikari import Activity, ActivityType, StartedEvent, Status
@@ -12,7 +14,7 @@ async def presence(event: StartedEvent) -> None:
 
     The activity changes between watching info and playing with stars.
     """
-    logger.trace("Setting presence")
+    logger.trace(f"Setting presence [{event}]")
     while 1:
         try:
             await bot.update_presence(
