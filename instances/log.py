@@ -26,7 +26,7 @@ from instances.args import args
 logger.remove()
 
 # Define custom log levels with associated colors and icons
-logger.level("TRACE", color="<white>", icon="🩶")
+logger.level("TRACE", color="<white>", icon="🩶 ")
 logger.level("DEBUG", color="<magenta>", icon="💜")
 logger.level("INFO", color="<green>", icon="💚")
 logger.level("SUCCESS", color="<green>", icon="💚")
@@ -61,8 +61,7 @@ logger.add(
 logger.add(
     sink=stdout,
     format="<green>{time:HH:mm:ss:SSS}</green> | "
-    "<level>{level}</level> | "
-    "{level.icon}  | "
+    "{level.icon} | "
     "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
     "<level>{message}</level>",
     level=LEVEL,  # Set level based on verbosity
