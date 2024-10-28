@@ -5,22 +5,20 @@ Example:
     /ping
 """
 
-from datetime import datetime
 from json import load
 from urllib.error import URLError
 from urllib.request import urlopen
 
 from arc import GatewayContext, slash_command
-from hikari import Color
-from hikari.embeds import Embed
 
+from helpers.embed import new_embed
 from instances.bot import bot
 from instances.log import logger
 
 logger.trace("Initialising ping command")
 
 try:
-    with urlopen("https://worldtimeapi.org/api/timezone") as f:
+    with urlopen("https://worldtimeapi.org/api/timezone", timeout=5) as f:
         data: dict = load(f)
 except URLError:
     logger.error("Failed to get server geo data")
@@ -42,16 +40,12 @@ async def ping(ctx: GatewayContext) -> None:
         None
     """
     logger.trace(f"/ping command called ({ctx.author.username})")
-    embed: Embed = Embed(
+    embed = new_embed(
+        ctx,
         title="🏓 Network details",
         description=(
             f"- 🌍 Server Geo: {data['country']}, {data['region']}\n"
             f"- ⏳ Latency: {round(bot.heartbeat_latency * 1000)}ms "
         ),
-        color=Color.from_rgb(90, 0, 240),
-    )
-    embed.set_footer(
-        text=f"Matter  •  Called by @{ctx.author.username}  •  {datetime.now().strftime('%H:%M:%S')}",
-        icon=ctx.author.avatar_url,
     )
     await ctx.respond(embed=embed)
