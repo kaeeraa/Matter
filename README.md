@@ -52,17 +52,7 @@ Matter is the perfect ticket bot for any Discord server, offering a wide range o
 
 <br>
 
-**[wlroots]** - *For powering Matter in the past*
-
-**[tinywl]** - *For showing how 2 do stuff*
-
 **[Sway]** - *For showing how 2 do stuff the overkill way*
-
-**[Vivarium]** - *For showing how 2 do stuff the simple way*
-
-**[dwl]** - *For showing how 2 do stuff the hacky way*
-
-**[Wayfire]** - *For showing how 2 do some graphics stuff* -->
 
 <!----------------------------------------------------------------------------->
 
@@ -100,4 +90,4 @@ Matter is the perfect ticket bot for any Discord server, offering a wide range o
 [Badge Language]: https://img.shields.io/github/languages/top/kaeeraa/Matter
 [Badge License]: https://img.shields.io/github/license/kaeeraa/Matter
 
-<!-- actually stoled readme from https://github.com/kaeeraa/Matter , thanks u  -->
+<!-- actually stole readme from Hyprland , thanks u  -->
