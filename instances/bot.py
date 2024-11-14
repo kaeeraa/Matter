@@ -10,8 +10,8 @@ from instances.log import logger
 
 load_dotenv()
 
-logger.trace("Initialising bot")
+logger.trace("Initializing bot")
 bot = GatewayBot(token=environ["BOT_TOKEN"], intents=Intents.ALL)
 
-logger.trace("Initialising client")
+logger.trace("Initializing client")
 client = GatewayClient(app=bot)
