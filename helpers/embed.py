@@ -7,7 +7,7 @@ from hikari import Color
 from hikari.embeds import Embed
 
 
-def new_embed(ctx: GatewayContext, title: str, description: str) -> Embed:
+def newEmbed(ctx: GatewayContext, title: str, description: str) -> Embed:
     """
     Generate a new Embed object with specified title and description.
 
