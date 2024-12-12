@@ -51,6 +51,6 @@ async def ping(ctx: GatewayContext) -> None:
                 description=(f"- 🌍 Server Geo: {country}, {region}\n" f"- ⏳ Latency: {latency}ms"),
             )
         )
-    except Exception as e:
+    except (ValueError, TypeError) as e:
         logger.error(f"Error in /ping command: {e}")
         await ctx.respond("An error occurred while processing your request.")
