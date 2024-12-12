@@ -11,7 +11,7 @@ from urllib.request import urlopen
 
 from arc import GatewayContext, slash_command
 
-from helpers.embed import new_embed
+from helpers.embed import newEmbed
 from instances.bot import bot
 from instances.log import logger
 
@@ -45,7 +45,7 @@ async def ping(ctx: GatewayContext) -> None:
         latency = round(bot.heartbeat_latency * 1000) if bot.heartbeat_latency else "Unavailable"
 
         await ctx.respond(
-            embed=new_embed(
+            embed=newEmbed(
                 ctx,
                 title="🏓 Network details",
                 description=(f"- 🌍 Server Geo: {country}, {region}\n" f"- ⏳ Latency: {latency}ms"),
