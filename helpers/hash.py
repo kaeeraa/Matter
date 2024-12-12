@@ -3,6 +3,7 @@
 Returns:
     str: A unique hash for the user.
 """
+
 from hashlib import sha256
 
 

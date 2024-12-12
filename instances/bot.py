@@ -6,9 +6,8 @@ from arc import GatewayClient
 from dotenv import load_dotenv
 from hikari import GatewayBot, Intents
 
-from root import rootDir
-
 from instances.log import logger
+from root import rootDir
 
 load_dotenv(f"{rootDir}/configuration/.env")
 
