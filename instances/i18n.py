@@ -18,7 +18,7 @@ class Locale():
         """
         self.locale = "en_US"
 
-        with open(f"{rootDir}/configuration/lang/{self.locale}.json5", "r") as f:
+        with open(f"{rootDir}/configuration/lang/{self.locale}.json5", "r", encoding="utf-8") as f:
             self.data = decode_io(StringIO(f.read()))
 
     def setLocale(self, locale: str):
@@ -30,7 +30,7 @@ class Locale():
         """
         self.locale = locale
 
-        with open(f"{rootDir}/configuration/lang/{self.locale}.json5", "r") as f:
+        with open(f"{rootDir}/configuration/lang/{self.locale}.json5", "r", encoding="utf-8") as f:
             self.data = decode_io(StringIO(f.read()))
 
     def getString(self, key: str) -> str:
