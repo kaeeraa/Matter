@@ -28,12 +28,14 @@ logger.remove()
 # Define custom log levels with associated colors and icons
 logger.level("TRACE", color="<white>", icon="🩶 ")
 logger.level("DEBUG", color="<magenta>", icon="💜")
+logger.level("DEPRECATION", no=15, color="<white>", icon="❤️‍🩹")
 logger.level("INFO", color="<green>", icon="💚")
 logger.level("SUCCESS", color="<green>", icon="💚")
 logger.level("WARNING", color="<yellow>", icon="💛")
 logger.level("ERROR", color="<red>", icon="💔")
 logger.level("CRITICAL", color="<red>", icon="💔")
 
+# Set log level based on verbosity
 if args.verbose:
     LEVEL = "DEBUG"
 elif args.vomit:
@@ -50,7 +52,7 @@ logger.add(
     "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
     "<level>{message}</level>",
     level=LEVEL,  # Set level based on verbosity
-    serialize=True,  # Enable log serialization
+    serialize=False,  # Enable log serialization
     colorize=False,  # Disable colorization in file logs
     rotation="10 MB",  # Rotate logs after reaching 10 MB
     retention="7 days",  # Retain logs for 7 days
