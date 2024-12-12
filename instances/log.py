@@ -22,6 +22,8 @@ from loguru import logger
 
 from instances.args import args
 
+from root import rootDir
+
 # Remove all existing handlers
 logger.remove()
 
@@ -46,7 +48,7 @@ else:
 # Add a file handler with specific configurations
 logger.add(
     # Generate a unique log filename ({time}_xxxxxxxx.log)
-    sink=f"logs/{datetime.now().strftime('%Y-%m-%d')}_{randbytes(n=4).hex()}.log",
+    sink=f"{rootDir}/logs/{datetime.now().strftime('%Y-%m-%d')}_{randbytes(n=4).hex()}.log",
     format="<green>{time:HH:mm:ss:SSS}</green> | "
     "<level>{level}</level> | "
     "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
