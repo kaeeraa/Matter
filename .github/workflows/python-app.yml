@@ -32,9 +32,7 @@ jobs:
     - name: Install code dependencies
       run: |
         pip install .
-    - name: Lint with pylint
-      run: |
-        pylint .
+
     - name: Format with flake8
       run: |
         flake8 .
@@ -51,3 +49,6 @@ jobs:
             git add .
             git commit -m "auto: code formatting"
         fi
+    - name: Lint with pylint
+      run: |
+        pylint .
