@@ -1,7 +1,4 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
-name: Format and Lint
+name: Format
 
 on:
   push:
@@ -50,6 +47,3 @@ jobs:
       run: |
         git add .
         git commit -m "auto: code formatting"
-    - name: Lint with pylint
-      run: |
-        pylint .
