@@ -52,6 +52,11 @@ jobs:
 
             - name: Commit changes
               run: |
+                  if git diff-index --quiet HEAD; then
+                      echo "No changes to commit."
+                      exit 0
+                  fi
+                  echo "Committing changes..."
                   git commit -a -m "refactor(*): format code with black, isort and flake8"
 
             - name: Push changes
