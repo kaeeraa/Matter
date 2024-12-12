@@ -42,13 +42,10 @@ jobs:
     - name: Format with isort
       run: |
         isort .
-    - name: Check formatting changes
+    - name: Commit changes
       run: |
-        git diff --quiet
-        if [ $? -ne 0 ]; then
-            git add .
-            git commit -m "auto: code formatting"
-        fi
+        git add .
+        git commit -m "auto: code formatting"
     - name: Lint with pylint
       run: |
         pylint .
