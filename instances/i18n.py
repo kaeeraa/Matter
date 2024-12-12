@@ -3,12 +3,14 @@
 """
 
 from io import StringIO
+
 # IDK why pylint doesn't like this | pylint: disable=no-name-in-module
 from pyjson5 import decode_io
+
 from root import rootDir
 
 
-class Locale():
+class Locale:
     """
     A class representing a locale.
 

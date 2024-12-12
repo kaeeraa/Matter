@@ -21,7 +21,6 @@ from sys import stdout
 from loguru import logger
 
 from instances.args import args
-
 from root import rootDir
 
 # Remove all existing handlers
