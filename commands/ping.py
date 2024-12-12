@@ -15,17 +15,15 @@ from helpers.embed import new_embed
 from instances.bot import bot
 from instances.log import logger
 
-logger.trace("Initialising ping command")
+logger.trace("Initializing ping command")
+
+data: dict = {}
 
 try:
-    with urlopen("https://worldtimeapi.org/api/timezone", timeout=5) as f:
-        data: dict = load(f)
-except URLError:
+    with urlopen("http://ip-api.com/json/?fields=country,regionName,city", timeout=5) as f:
+        data = load(f)
+except URLError:  # it can be unavailable btw
     logger.error("Failed to get server geo data")
-    data = {
-        "country": "Unknown",
-        "region": "Unknown",
-    }
 
 
 @slash_command(name="ping", description="Returns the bot's heartbeat latency.")
@@ -40,12 +38,19 @@ async def ping(ctx: GatewayContext) -> None:
         None
     """
     logger.trace(f"/ping command called ({ctx.author.username})")
-    embed = new_embed(
-        ctx,
-        title="🏓 Network details",
-        description=(
-            f"- 🌍 Server Geo: {data['country']}, {data['region']}\n"
-            f"- ⏳ Latency: {round(bot.heartbeat_latency * 1000)}ms "
-        ),
-    )
-    await ctx.respond(embed=embed)
+
+    try:
+        country = data.get("country", "Unknown")
+        region = data.get("city", "Unknown")
+        latency = round(bot.heartbeat_latency * 1000) if bot.heartbeat_latency else "Unavailable"
+
+        await ctx.respond(
+            embed=new_embed(
+                ctx,
+                title="🏓 Network details",
+                description=(f"- 🌍 Server Geo: {country}, {region}\n" f"- ⏳ Latency: {latency}ms"),
+            )
+        )
+    except Exception as e:
+        logger.error(f"Error in /ping command: {e}")
+        await ctx.respond("An error occurred while processing your request.")
