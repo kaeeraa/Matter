@@ -6,7 +6,7 @@ Returns:
 from hashlib import sha256
 
 
-def get_user_hash(user_id: int, user_name: str) -> str:
+def getUserHash(userId: int, userName: str) -> str:
     """
     Generates a unique hash for a user based on their user ID and username.
 
@@ -17,4 +17,4 @@ def get_user_hash(user_id: int, user_name: str) -> str:
     Returns:
         str: A SHA-256 hash representing the user's combined ID and username.
     """
-    return sha256(f"{user_id}{user_name}".encode()).hexdigest()
+    return sha256(f"{userId}{userName}".encode()).hexdigest()
