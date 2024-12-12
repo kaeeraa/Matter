@@ -1,4 +1,5 @@
 """
+    This module contains the Locale class, which is used to provide localization support for the bot.
 """
 
 from io import StringIO
@@ -8,6 +9,17 @@ from root import rootDir
 
 
 class Locale():
+    """
+    A class representing a locale.
+
+    The Locale class provides methods for setting and retrieving strings from a
+    specified locale. It is used to provide localization support for the bot.
+
+    Attributes:
+        locale (str): The default locale, initially set to "en_US".
+        data (dict): A dictionary containing the language data for the current locale.
+    """
+
     def __init__(self):
         """
         Initializes a new Locale instance with the default locale set to "en_US".
