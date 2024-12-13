@@ -10,6 +10,7 @@ from io import StringIO
 
 # IDK why pylint doesn't like this | pylint: disable=no-name-in-module
 from pyjson5 import decode_io
+
 from root import rootDir
 
 
@@ -27,6 +28,7 @@ class Config:
         config (dict): A dictionary containing the configuration settings
         loaded from the JSON5 file.
     """
+
     def __init__(self):
         with open(f"{rootDir}/configuration/config.json5", "r", encoding="utf-8") as f:
             self.config = decode_io(StringIO(f.read()))
