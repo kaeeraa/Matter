@@ -9,14 +9,11 @@
         token: "", // Bot token
         owner: {
             id: "", // Bot owner ID
-            // user_id concatenated with user_name and encrypted with SHA256
-            // e.g. 919249985873252412kaeeraa -> cee49816c9ccf403e957813488ba0e6921591ba32b247dd7f993ea80016015fc
-            hash: "", // Bot owner hash
         },
 
         logging: {
             enabled: true, // Enable logging (toggles file logging)
-            level: "INFO", // Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+            level: "INFO", // Logging level for console (DEBUG, INFO, WARNING, ERROR, CRITICAL)
         },
     },
 }
