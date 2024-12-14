@@ -2,17 +2,16 @@
 
 from datetime import datetime
 
-from arc import GatewayContext
-from hikari import Color
+from hikari import Color, User
 from hikari.embeds import Embed
 
 
-def newEmbed(ctx: GatewayContext, title: str, description: str) -> Embed:
+def newEmbed(author: User, title: str, description: str) -> Embed:
     """
     Generate a new Embed object with specified title and description.
 
     Args:
-        ctx (GatewayContext): Context of the command invocation for author details.
+        author (User): The user object of the command invoker.
         title (str): Title of the embed.
         description (str): Description content of the embed.
 
@@ -27,8 +26,8 @@ def newEmbed(ctx: GatewayContext, title: str, description: str) -> Embed:
     )
 
     embed.set_footer(
-        text=f"Matter  •  Called by @{ctx.author.username}  •  {datetime.now().strftime('%H:%M:%S')}",
-        icon=ctx.author.avatar_url,
+        text=f"Matter  •  Called by @{author.username}  •  {datetime.now().strftime('%H:%M:%S')}",
+        icon=author.avatar_url,
     )
 
     return embed
