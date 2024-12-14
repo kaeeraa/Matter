@@ -51,10 +51,10 @@ async def ping(ctx: GatewayContext) -> None:
 
         await ctx.respond(
             embed=newEmbed(
-                ctx,
+                ctx.author,
                 title="🏓 Network details",
                 description=(f"- 🌍 Server Geo: {country}, {region}\n" f"- ⏳ Latency: {latency}ms"),
             )
         )
     except (ValueError, TypeError) as e:
-        await sendError(e, ctx.author, COMMAND_NAME)
+        await sendError(e, ctx, COMMAND_NAME)
