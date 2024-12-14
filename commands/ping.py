@@ -11,7 +11,9 @@ from urllib.request import urlopen
 
 from arc import GatewayContext, slash_command
 
+from helpers.errorHandler import sendError
 from helpers.embed import newEmbed
+
 from instances.bot import bot
 from instances.log import logger
 
@@ -55,5 +57,4 @@ async def ping(ctx: GatewayContext) -> None:
             )
         )
     except (ValueError, TypeError) as e:
-        logger.error(f"Error in /ping command: {e}")
-        await ctx.respond("An error occurred while processing your request.")
+        await sendError(e, ctx, COMMAND_NAME)
