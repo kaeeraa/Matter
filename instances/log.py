@@ -58,6 +58,7 @@ logger.add(
     rotation="10 MB",  # Rotate logs after reaching 10 MB
     retention="7 days",  # Retain logs for 7 days
     compression="zip",  # Compress rotated logs using zip
+    enqueue=True,  # Enable asynchronous logging
 )
 
 # Add a stdout handler for console output
@@ -68,4 +69,5 @@ logger.add(
     "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
     "<level>{message}</level>",
     level=LEVEL,  # Set level based on verbosity
+    enqueue=True,  # Enable asynchronous logging
 )
