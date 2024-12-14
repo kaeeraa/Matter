@@ -11,9 +11,8 @@ from urllib.request import urlopen
 
 from arc import GatewayContext, slash_command
 
-from helpers.errorHandler import sendError
 from helpers.embed import newEmbed
-
+from helpers.errorHandler import sendError
 from instances.bot import bot
 from instances.log import logger
 
