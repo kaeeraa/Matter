@@ -1,6 +1,8 @@
 """This module contains the Ticket class."""
+
 from datetime import datetime
 from enum import Enum
+
 from hikari import User
 
 
@@ -10,6 +12,7 @@ class Status(Enum):
 
     This enumeration contains the different statuses that a ticket can have.
     """
+
     OPEN = "open"
     IN_PROGRESS = "in_progress"
     RESOLVED = "resolved"
@@ -23,13 +26,9 @@ class Ticket:
     This class represents a ticket and its attributes.
     """
 
-    def __init__(self,
-                 ticketId: int,
-                 author: User,
-                 authorId: int,
-                 title: str,
-                 description: str,
-                 status: Status = Status.OPEN):
+    def __init__(
+        self, ticketId: int, author: User, authorId: int, title: str, description: str, status: Status = Status.OPEN
+    ):
         self.ticketId = ticketId
         self.author = author
         self.authorId = authorId
