@@ -57,4 +57,4 @@ async def ping(ctx: GatewayContext) -> None:
             )
         )
     except (ValueError, TypeError) as e:
-        await sendError(e, ctx, COMMAND_NAME)
+        await sendError(e, ctx.author, COMMAND_NAME)
