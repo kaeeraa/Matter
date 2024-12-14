@@ -15,6 +15,9 @@ from helpers.embed import newEmbed
 from instances.bot import bot
 from instances.log import logger
 
+COMMAND_NAME = "ping"
+COMMAND_DESCRIPTION = "Returns the bot's heartbeat latency."
+
 logger.trace("Initializing ping command")
 
 data: dict = {}
