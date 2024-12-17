@@ -30,7 +30,7 @@ class Config:
     """
 
     def __init__(self):
-        with open(f"{rootDir}/configuration/config.json5", "r", encoding="utf-8") as f:
+        with open(f"{rootDir}/configuration/settings.json5", "r", encoding="utf-8") as f:
             self.config = decode_io(StringIO(f.read()))
 
     def getToken(self) -> str:
@@ -59,4 +59,3 @@ class Config:
             list: The keys of the bot.
         """
         return self.config
-
