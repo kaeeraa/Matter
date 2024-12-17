@@ -33,7 +33,7 @@ class Config:
         with open(f"{rootDir}/configuration/config.json5", "r", encoding="utf-8") as f:
             self.config = decode_io(StringIO(f.read()))
 
-    def getToken(self):
+    def getToken(self) -> str:
         """
         Returns the bot token.
 
@@ -42,7 +42,7 @@ class Config:
         """
         return self.config["bot"]["token"]
 
-    def getOwner(self):
+    def getOwner(self) -> int:
         """
         Returns the owner of the bot.
 
@@ -50,3 +50,13 @@ class Config:
             int: The owner of the bot.
         """
         return self.config["bot"]["owner"]
+
+    def getConfig(self) -> dict:
+        """
+        Returns the keys of the bot.
+
+        Returns:
+            list: The keys of the bot.
+        """
+        return self.config
+
