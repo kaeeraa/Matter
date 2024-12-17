@@ -6,6 +6,7 @@ from os import name
 from hikari import StartedEvent
 
 from commands.ping import ping
+from commands.newTicket import newTicket
 from instances.bot import bot, client
 from instances.log import logger
 from passive.presence import presence
@@ -23,6 +24,7 @@ logger.success("Starting Matter")
 
 logger.trace("Including slash commands")
 client.include(command=ping)
+client.include(command=newTicket)
 
 logger.trace("Setting presence")
 bot.listen(StartedEvent)(presence)
