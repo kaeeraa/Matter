@@ -37,4 +37,3 @@ def run() -> None:
 
 if __name__ == "__main__":
     run()
-    logger.success("Matter has stopped!")
