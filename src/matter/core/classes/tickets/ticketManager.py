@@ -3,10 +3,13 @@ Manages tickets.
 
 This class contains methods to create, manage and get tickets.
 """
+
 from typing import Any
+
 from hikari import User
-from matter.core.classes.ticket import Ticket
+
 from matter.core.classes.data import Data
+from matter.core.classes.ticket import Ticket
 
 
 class TicketManager:
@@ -15,6 +18,7 @@ class TicketManager:
 
     This class contains methods to create, manage and get tickets.
     """
+
     _data: Data
     _tickets: dict[str, Any] = {}
 
@@ -25,21 +29,11 @@ class TicketManager:
         if not self._tickets:
             self._data.put("tickets", {})
 
-    def newTicket(self,
-                  author: User,
-                  title: str,
-                  description: str
-                  ) -> Ticket:
+    def newTicket(self, author: User, title: str, description: str) -> Ticket:
 
         _ticketsCount: int = len(self._data.get("tickets"))
 
-        _ticket = Ticket(
-            _ticketsCount + 1,
-            author,
-            author.id,
-            title,
-            description
-        )
+        _ticket = Ticket(_ticketsCount + 1, author, author.id, title, description)
 
         _serialised: dict[str, Any] = {
             "authorId": _ticket.authorId,
@@ -47,7 +41,7 @@ class TicketManager:
             "description": _ticket.description,
             "status": _ticket.status.value,
             "createdAt": _ticket.createdAt,
-            "updatedAt": _ticket.updatedAt
+            "updatedAt": _ticket.updatedAt,
         }
 
         self._data.put(f"tickets.{_ticket.ticketId}", _serialised)

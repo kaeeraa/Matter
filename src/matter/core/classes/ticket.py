@@ -26,14 +26,9 @@ class Ticket:
     This class represents a ticket and its attributes.
     """
 
-    def __init__(self,
-                 ticketId: int,
-                 author: User,
-                 authorId: int,
-                 title: str,
-                 description: str,
-                 status: Status = Status.OPEN
-                 ):
+    def __init__(
+        self, ticketId: int, author: User, authorId: int, title: str, description: str, status: Status = Status.OPEN
+    ):
         self.ticketId: int = ticketId
         self.author: User = author
         self.authorId: int = authorId

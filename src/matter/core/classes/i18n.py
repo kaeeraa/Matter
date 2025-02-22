@@ -1,7 +1,9 @@
 """Module that contains i18n implementation"""
 
 from typing import Any
+
 from pyjson5 import loads
+
 from matter import ROOT
 
 
