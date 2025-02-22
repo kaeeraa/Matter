@@ -36,17 +36,6 @@ class Locale:
         with open(f"/configuration/lang/{locale}.json5", "r", encoding="utf-8") as f:
             self._data = loads(f.read())
 
-    def get(self, key: str) -> str:
-        """Get key value in current locale
-
-        Args:
-            key (str): an key
-
-        Returns:
-            str: if key exists return non-empty str
-        """
-        return self._data.get(key, "")
-
     def current(self) -> str:
         """Get current locale
 
@@ -62,3 +51,6 @@ class Locale:
             str: path to locale
         """
         return f"/configuration/lang/{self._locale}.json5"
+
+    def tr(self, text: str) -> str:
+        return self._data.get(text, text)
