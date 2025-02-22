@@ -10,20 +10,22 @@ Example:
 """
 
 from typing import Any
-from arc import Option, slash_command, GatewayContext
+
+from arc import GatewayContext, Option, slash_command
+
+from matter.core.classes.config import Config
 from matter.core.classes.logger import logger
 from matter.core.classes.ticket import Ticket
 from matter.core.classes.tickets.ticketManager import TicketManager
-from matter.core.classes.config import Config
 
 COMMAND_NAME = "new"
 COMMAND_DESCRIPTION = "Create a new ticket"
 
 
 @slash_command(name="new", description="Create a new ticket")
-async def newTicket(ctx: GatewayContext,
-                    title: Option[str, str] = "Ndfined",
-                    description: Option[str, str] = "None") -> None:
+async def newTicket(
+    ctx: GatewayContext, title: Option[str, str] = "Ndfined", description: Option[str, str] = "None"
+) -> None:
     """
     Creates a new ticket and sends a message to the channel.
 
@@ -42,16 +44,13 @@ async def newTicket(ctx: GatewayContext,
     if guild := ctx.get_guild():
         name: str = _config.get("brain.tickets.format", "{username}-{counter}")
 
-        formattedName: str = name.format(
-            username=_ticket.author.username,
-            counter=_ticket.ticketId
-        )
+        formattedName: str = name.format(username=_ticket.author.username, counter=_ticket.ticketId)
 
         await guild.create_text_channel(
             name=formattedName,
             topic=_ticket.description,
             category=_config.get("brain.tickets.category_id", None),
-            reason=f"New ticket by {ctx.author.username}"
+            reason=f"New ticket by {ctx.author.username}",
         )
 
         await ctx.respond("Ticket created successfully!")

@@ -9,10 +9,11 @@ retrieve specific data associated with a given key.
 """
 
 from typing import Any
-from pyjson5 import Json5EOF, decode, loads, encode
 
-from matter.core.classes.logger import logger
+from pyjson5 import Json5EOF, decode, encode, loads
+
 from matter import ROOT
+from matter.core.classes.logger import logger
 
 
 class Data:
@@ -46,7 +47,7 @@ class Data:
             logger.error("Data contains circular reference")
             return
 
-        _parts: list[str] = path.split('.')
+        _parts: list[str] = path.split(".")
         _current: dict[str, Any] = self._data
 
         for part in _parts[:-1]:

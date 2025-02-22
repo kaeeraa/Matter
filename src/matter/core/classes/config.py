@@ -7,7 +7,9 @@ object for use throughout the application.
 """
 
 from typing import Any
+
 from pyjson5 import loads
+
 from matter import ROOT
 
 
