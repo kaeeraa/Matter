@@ -8,7 +8,7 @@ object for use throughout the application.
 
 from typing import Any
 from pyjson5 import loads
-from matter.core.classes import ROOT
+from matter import ROOT
 
 
 class Config:
