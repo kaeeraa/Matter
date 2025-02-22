@@ -5,6 +5,7 @@ from argparse import ArgumentParser
 
 class Args:
     """Argument parser for the bot."""
+
     _parser = ArgumentParser(
         prog="Matter bot",
         description="An all-in-one ticket bot for Discord.",
@@ -12,17 +13,9 @@ class Args:
     )
 
     def __init__(self) -> None:
+        self._parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose logging", default=False)
         self._parser.add_argument(
-            "-v", "--verbose",
-            action="store_true",
-            help="Enable verbose logging",
-            default=False
-        )
-        self._parser.add_argument(
-            "-vv", "--vomit",
-            action="store_true",
-            help="Enable trace (vomit) logging",
-            default=False
+            "-vv", "--vomit", action="store_true", help="Enable trace (vomit) logging", default=False
         )
 
     @property
