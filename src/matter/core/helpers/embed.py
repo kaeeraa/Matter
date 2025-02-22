@@ -6,7 +6,7 @@ from hikari import Color, User
 from hikari.embeds import Embed
 
 
-def newEmbed(author: User, title: str, description: str) -> Embed:
+def embed(author: User, title: str, description: str) -> Embed:
     """
     Generate a new Embed object with specified title and description.
 
@@ -26,7 +26,7 @@ def newEmbed(author: User, title: str, description: str) -> Embed:
     )
 
     embed.set_footer(
-        text=f"Matter  •  Called by @{author.username}  •  {datetime.now().strftime('%H:%M:%S')}",
+        text=f"Matter  •  Called by @{author.username}  •  at {datetime.now().strftime('%H:%M:%S')}",
         icon=author.avatar_url,
     )
 

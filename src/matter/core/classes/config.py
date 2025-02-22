@@ -6,12 +6,9 @@ configuration directory. The configuration is loaded into a dictionary
 object for use throughout the application.
 """
 
-from io import StringIO
-
-# IDK why pylint doesn't like this | pylint: disable=no-name-in-module
-from pyjson5 import decode_io
-
-from root import rootDir
+from typing import Any
+from pyjson5 import loads
+from matter.core.classes import ROOT
 
 
 class Config:
@@ -29,9 +26,15 @@ class Config:
         loaded from the JSON5 file.
     """
 
+    _config: dict[Any, Any] = {}
+    _path: str = f"{ROOT}/configuration/settings.json5"
+
     def __init__(self):
-        with open(f"{rootDir}/configuration/settings.json5", "r", encoding="utf-8") as f:
-            self.config = decode_io(StringIO(f.read()))
+        self._config = self._load(self._path)
+
+    def _load(self, path: str = _path) -> dict[Any, Any]:
+        with open(path, "r", encoding="utf-8") as f:
+            return loads(f.read())
 
     def getToken(self) -> str:
         """
@@ -40,7 +43,7 @@ class Config:
         Returns:
             str: The bot token.
         """
-        return self.config["bot"]["token"]
+        return self._config["bot"]["token"]
 
     def getOwner(self) -> int:
         """
@@ -49,13 +52,13 @@ class Config:
         Returns:
             int: The owner of the bot.
         """
-        return self.config["bot"]["owner"]
+        return self._config["bot"]["owner"]
 
-    def getConfig(self) -> dict:
+    def getConfig(self) -> dict[str, Any]:
         """
         Returns the keys of the bot.
 
         Returns:
             list: The keys of the bot.
         """
-        return self.config
+        return self._config

@@ -3,8 +3,8 @@
 from arc import GatewayClient
 from hikari import GatewayBot, Intents
 
-from instances.config import Config
-from instances.log import logger
+from matter.core.classes.config import Config
+from matter.core.classes.logger import logger
 
 logger.trace("Initializing bot")
 bot = GatewayBot(token=Config().getToken(), intents=Intents.ALL)
