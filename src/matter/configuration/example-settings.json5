@@ -3,6 +3,7 @@
         // Settings for the controller
         "per-guild-settings": true, // Enable per-guild settings (aka ignore bot.brain settings)
         "ignore-hash": false, // Continue without checking hash
+        language: "en_US",
     },
 
     bot: {
@@ -29,6 +30,6 @@
                 // {counter} - ID of the ticket
                 format: "{username}-{counter}", // Ticket name format
             },
-        }
+        },
     },
 }
