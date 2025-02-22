@@ -8,6 +8,7 @@ retrieve specific data associated with a given key.
 
 """
 
+from pathlib import Path
 from typing import Any
 from pyjson5 import Json5EOF, decode, loads, encode
 
@@ -29,6 +30,8 @@ class Data:
                 self._data = loads(f.read())
             except Json5EOF:
                 self._data = {}
+            except FileNotFoundError:
+                Path('path/to/file.txt').touch()
 
     def _write(self) -> None:
         with open(self._path, "w", encoding="utf-8") as f:
