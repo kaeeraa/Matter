@@ -6,27 +6,27 @@ Example:
 """
 
 from json import load
+from typing import Any
 from urllib.error import URLError
 from urllib.request import urlopen
 
 from arc import GatewayContext, slash_command
 
-from helpers.embed import newEmbed
-from helpers.errorHandler import sendError
-from instances.bot import bot
-from instances.log import logger
+from matter.core.helpers.embed import embed
+from matter.core.classes.bot import bot
+from matter.core.classes.logger import logger
 
 COMMAND_NAME = "ping"
 COMMAND_DESCRIPTION = "Returns the bot's heartbeat latency."
 
 logger.trace("Initializing ping command")
 
-data: dict = {}
+data: dict[str, Any] = {}
 
 try:
     with urlopen("http://ip-api.com/json/?fields=country,regionName,city", timeout=5) as f:
         data = load(f)
-except URLError:  # it can be unavailable btw
+except URLError:
     logger.error("Failed to get server geo data")
 
 
@@ -49,11 +49,14 @@ async def ping(ctx: GatewayContext) -> None:
         latency = round(bot.heartbeat_latency * 1000) if bot.heartbeat_latency else "Unavailable"
 
         await ctx.respond(
-            embed=newEmbed(
+            embed=embed(
                 ctx.author,
                 title="🏓 Network details",
-                description=(f"- 🌍 Server Geo: {country}, {region}\n" f"- ⏳ Latency: {latency}ms"),
+                description=(
+                    f"- 🌍 Server Geo: {country}, {region}\n"
+                    f"- ⏳ Latency: {latency}ms"
+                ),
             )
         )
-    except (ValueError, TypeError) as e:
-        await sendError(e, ctx, COMMAND_NAME)
+    except (ValueError, TypeError):
+        raise RuntimeWarning("Could not fetch current geo") from None

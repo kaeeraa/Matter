@@ -4,24 +4,24 @@ from asyncio import sleep
 
 from hikari import Activity, ActivityType, StartedEvent, Status
 
-from instances.bot import bot
-from instances.log import logger
+from matter.core.classes.bot import bot
+from matter.core.classes.logger import logger
 
 
 async def presence(event: StartedEvent) -> None:
-    """
-    An event listener that updates the bot's presence every 10 seconds.
+    """Cycle between presences every 10 seconds
 
-    The activity changes between watching info and playing with stars.
+    Args:
+        event (StartedEvent): an bot start event
     """
-    logger.trace(f"Setting presence [{event}]")
-    while 1:
+    logger.trace("Setting presence")
+    while bot.is_alive:
         try:
             await bot.update_presence(
                 status=Status.ONLINE,
                 activity=Activity(
                     type=ActivityType.WATCHING,
-                    name="/help | v#0.1.0",
+                    name="/help | v#0.1.1",
                     url="https://github.com/kaeeraa/Matter",
                 ),
             )

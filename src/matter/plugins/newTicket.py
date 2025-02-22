@@ -9,16 +9,15 @@ Example:
     /new test ticket This is a test ticket
 """
 
+from typing import Any
 from arc import Option, slash_command, GatewayContext
-from instances.log import logger
-from instances.tickets.ticketManager import TicketManager
-from instances.config import Config
-from helpers.errorHandler import sendError
+from matter.core.classes.logger import logger
+from matter.core.classes.ticket import Ticket
+from matter.core.classes.tickets.ticketManager import TicketManager
+from matter.core.classes.config import Config
 
 COMMAND_NAME = "new"
 COMMAND_DESCRIPTION = "Create a new ticket"
-
-# mypy: ignore-errors
 
 
 @slash_command(name="new", description="Create a new ticket")
@@ -37,25 +36,24 @@ async def newTicket(ctx: GatewayContext,
         None
     """
     logger.trace(f"/new command called ({ctx.author.username})")
-
-    ticket = TicketManager().newTicket(ctx.author, title, description)
-    config: dict = Config().getConfig()
+    _config: dict[str, Any] = Config().getConfig()
+    _ticket: Ticket = TicketManager().newTicket(ctx.author, title, description)
 
     if guild := ctx.get_guild():
-        name: str = config.get("brain.tickets.format", "{username}-{counter}")
+        name: str = _config.get("brain.tickets.format", "{username}-{counter}")
 
         formattedName: str = name.format(
-            username=ticket.author.username,
-            counter=ticket.ticketId
+            username=_ticket.author.username,
+            counter=_ticket.ticketId
         )
 
         await guild.create_text_channel(
             name=formattedName,
-            topic=ticket.description,
-            category=config.get("brain.tickets.category_id", None),
+            topic=_ticket.description,
+            category=_config.get("brain.tickets.category_id", None),
             reason=f"New ticket by {ctx.author.username}"
         )
 
         await ctx.respond("Ticket created successfully!")
         return
-    await sendError(Exception("Guild not found"), ctx, COMMAND_NAME)
+    raise RuntimeError()
