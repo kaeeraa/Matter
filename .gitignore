@@ -163,4 +163,4 @@ cython_debug/
 
 # Cache
 __pycache__/
-configuration/settings.json5
+src/matter/configuration/settings.json5
