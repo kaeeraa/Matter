@@ -12,9 +12,9 @@ from urllib.request import urlopen
 
 from arc import GatewayContext, slash_command
 
-from matter.core.helpers.embed import embed
 from matter.core.classes.bot import bot
 from matter.core.classes.logger import logger
+from matter.core.helpers.embed import embed
 
 COMMAND_NAME = "ping"
 COMMAND_DESCRIPTION = "Returns the bot's heartbeat latency."
@@ -52,10 +52,7 @@ async def ping(ctx: GatewayContext) -> None:
             embed=embed(
                 ctx.author,
                 title="🏓 Network details",
-                description=(
-                    f"- 🌍 Server Geo: {country}, {region}\n"
-                    f"- ⏳ Latency: {latency}ms"
-                ),
+                description=(f"- 🌍 Server Geo: {country}, {region}\n" f"- ⏳ Latency: {latency}ms"),
             )
         )
     except (ValueError, TypeError):
