@@ -32,7 +32,7 @@ class Data:
             except Json5EOF:
                 self._data = {}
             except FileNotFoundError:
-                Path('path/to/file.txt').touch()
+                Path("path/to/file.txt").touch()
 
     def _write(self) -> None:
         with open(self._path, "w", encoding="utf-8") as f:
