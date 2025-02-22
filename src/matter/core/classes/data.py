@@ -12,7 +12,7 @@ from typing import Any
 from pyjson5 import Json5EOF, decode, loads, encode
 
 from matter.core.classes.logger import logger
-from matter.core.classes import ROOT
+from matter import ROOT
 
 
 class Data:

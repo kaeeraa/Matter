@@ -7,7 +7,7 @@ from sys import stdout
 from loguru import logger
 
 from matter.core.classes.args import args
-from matter.core.classes import ROOT
+from matter import ROOT
 
 # Remove all existing handlers
 logger.remove()
