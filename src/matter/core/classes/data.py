@@ -15,6 +15,7 @@ from pyjson5 import Json5EOF, decode, encode, loads
 
 from matter import ROOT
 from matter.core.classes.logger import logger
+from matter.core.classes.i18n import tr
 
 
 class Data:
@@ -32,22 +33,22 @@ class Data:
             except Json5EOF:
                 self._data = {}
             except FileNotFoundError:
-                Path("path/to/file.txt").touch()
+                Path(self._path).touch()
 
     def _write(self) -> None:
         with open(self._path, "w", encoding="utf-8") as f:
             f.write(encode(self._data))
 
-    @logger.catch(level="ERROR", message="Failed to read data")
+    @logger.catch(level="ERROR", message=tr("Failed to read data"))
     def get(self, path: str, default: Any = None) -> Any:
         return self._data.get(path, default)
 
-    @logger.catch(level="ERROR", message="Failed to write data")
+    @logger.catch(level="ERROR", message=tr("Failed to write data"))
     def put(self, path: str, data: dict[str, Any]) -> None:
         try:
             decode(encode(data))
         except RecursionError:
-            logger.error("Data contains circular reference")
+            logger.error(tr("Data contains circular reference"))
             return
 
         _parts: list[str] = path.split(".")
@@ -63,7 +64,7 @@ class Data:
 
         self._write()
 
-    @logger.catch(level="ERROR", message="Failed to remove data")
+    @logger.catch(level="ERROR", message=tr("Failed to remove data"))
     def remove(self, path: str) -> None:
         self._data.pop(path)
         self._write()

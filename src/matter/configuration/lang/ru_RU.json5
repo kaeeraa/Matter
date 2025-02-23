@@ -1,1 +1,43 @@
-{}
+{
+    // keywords
+    Unknown: "Неизвестно",
+    Unavailable: "Недоступно",
+
+    // main.py
+    "Using uvloop event loop policy": "Использование политики цикла событий uvloop",
+    "Failed to import uvloop, using default event loop policy": "Не удалось импортировать модуль uvloop, используется стандартная политика цикла событий",
+    "Starting Matter": "Запуск Matter",
+    "Including slash commands": "Добавление слэш-команд",
+    "Setting presence": "Настройка Discord RPC",
+    "Starting bot": "Запуск бота",
+
+    // core/classes/bot.py
+    "Initializing bot": "Инициализация бота",
+    "Initializing client": "Инициализация клиента",
+
+    // core/classes/data.py
+    "Failed to read data": "Не удалось прочитать данные",
+    "Failed to write data": "Не удалось записать данные",
+    "Failed to remove data": "Не удалось удалить данные",
+    "Data contains circular reference": "Данные содержат бесконечную рекурсию",
+
+    // helpers/embed.py
+    "Matter  •  Called by @{author}  •  at {date}": "Matter  •  Вызвано @{author}  •  в {date}",
+
+    // tasks/presence.py
+    "stars 🌌": "на звёзды 🌌",
+
+    // plugins/
+    "/{command} command called ({author})": "Команда /{command} была вызвана ({author})",
+
+    // plugins/newTicket.py
+    "Create a new ticket": "Создать новый тикет",
+    "New ticket by {author}": "Был создан новый тикет от {author}",
+    "Ticket created successfully!": "Ticket created successfully!",
+
+    // plugins/ping.py
+    "Returns the bot's heartbeat latency.": "Возвращает пинг бота.",
+    "Failed to get server geo data": "Не удалось получить гео-данные сервера",
+    "- 🌍 Server Geo: {country}, {region}\n- ⏳ Latency: {latency}ms": "- 🌍 Гео-данные сервера: {country}, {region}\n- ⏳ Задержка: {latency}ms",
+    "🏓 Network details": "🏓 Информация о сети",
+}
