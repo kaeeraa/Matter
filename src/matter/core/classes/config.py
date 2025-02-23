@@ -11,6 +11,7 @@ from typing import Any
 from pyjson5 import loads
 
 from matter import ROOT
+from matter.core.classes.logger import logger
 
 
 class Config:
@@ -28,39 +29,28 @@ class Config:
         loaded from the JSON5 file.
     """
 
-    _config: dict[Any, Any] = {}
+    _config: dict[str, Any] = {}
     _path: str = f"{ROOT}/configuration/settings.json5"
 
     def __init__(self):
         self._config = self._load(self._path)
 
-    def _load(self, path: str = _path) -> dict[Any, Any]:
+    def _load(self, path: str = _path) -> dict[str, Any]:
         with open(path, "r", encoding="utf-8") as f:
             return loads(f.read())
 
-    def getToken(self) -> str:
-        """
-        Returns the bot token.
+    def getString(self, key: str) -> str:
+        value: str = self._config.get(key, "")
 
-        Returns:
-            str: The bot token.
-        """
-        return self._config["bot"]["token"]
+        if value == "":
+            logger.error("Key '{}' is undefined", key)
 
-    def getOwner(self) -> int:
-        """
-        Returns the owner of the bot.
+        return value
 
-        Returns:
-            int: The owner of the bot.
-        """
-        return self._config["bot"]["owner"]
+    def getDictionary(self, key: str) -> dict[str, Any]:
+        value: dict[str, Any] = self._config.get(key, {})
 
-    def getConfig(self) -> dict[str, Any]:
-        """
-        Returns the keys of the bot.
+        if value == {}:
+            logger.error("Key '{}' is undefined", key)
 
-        Returns:
-            list: The keys of the bot.
-        """
-        return self._config
+        return value

@@ -6,7 +6,7 @@ from hikari import Activity, ActivityType, StartedEvent, Status
 
 from matter.build.BuildConfig import build
 from matter.core.classes.bot import bot
-from matter.core.classes.logger import logger
+from matter.core.classes.i18n import tr
 
 
 async def presence(event: StartedEvent) -> None:
@@ -15,8 +15,6 @@ async def presence(event: StartedEvent) -> None:
     Args:
         event (StartedEvent): an bot start event
     """
-    logger.trace("Setting presence")
-
     version: str = build.get("version")
 
     while bot.is_alive:
@@ -34,7 +32,7 @@ async def presence(event: StartedEvent) -> None:
                 status=Status.ONLINE,
                 activity=Activity(
                     type=ActivityType.WATCHING,
-                    name="stars 🌌",
+                    name=tr("stars 🌌"),
                     url="https://github.com/kaeeraa/Matter",
                 ),
             )

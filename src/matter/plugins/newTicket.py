@@ -17,12 +17,13 @@ from matter.core.classes.config import Config
 from matter.core.classes.logger import logger
 from matter.core.classes.ticket import Ticket
 from matter.core.classes.tickets.ticketManager import TicketManager
+from matter.core.classes.i18n import tr
 
 COMMAND_NAME = "new"
-COMMAND_DESCRIPTION = "Create a new ticket"
+COMMAND_DESCRIPTION = tr("Create a new ticket")
 
 
-@slash_command(name="new", description="Create a new ticket")
+@slash_command(name="new", description=COMMAND_DESCRIPTION)
 async def newTicket(
     ctx: GatewayContext, title: Option[str, str] = "Ndfined", description: Option[str, str] = "None"
 ) -> None:
@@ -37,8 +38,12 @@ async def newTicket(
     Returns:
         None
     """
-    logger.trace(f"/new command called ({ctx.author.username})")
-    _config: dict[str, Any] = Config().getConfig()
+    logger.trace(tr("/{command} command called ({author})").format(
+        command=COMMAND_NAME,
+        author=ctx.author.username
+    ))
+    # Return every config
+    _config: dict[str, Any] = Config().getDictionary("")
     _ticket: Ticket = TicketManager().newTicket(ctx.author, title, description)
 
     if guild := ctx.get_guild():
@@ -50,9 +55,9 @@ async def newTicket(
             name=formattedName,
             topic=_ticket.description,
             category=_config.get("brain.tickets.category_id", None),
-            reason=f"New ticket by {ctx.author.username}",
+            reason=tr("New ticket by {author}").format(author="ctx.author.username"),
         )
 
-        await ctx.respond("Ticket created successfully!")
+        await ctx.respond(tr("Ticket created successfully!"))
         return
     raise RuntimeError()

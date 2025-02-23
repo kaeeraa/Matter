@@ -1,1 +1,45 @@
-{}
+// This is an language file template
+{
+    // keywords
+    Unknown: "Unknown",
+    Unavailable: "Unavailable",
+
+    // main.py
+    "Using uvloop event loop policy": "Using uvloop event loop policy",
+    "Failed to import uvloop, using default event loop policy": "Failed to import uvloop, using default event loop policy",
+    "Starting Matter": "Starting Matter",
+    "Including slash commands": "Including slash commands",
+    "Setting presence": "Setting presence",
+    "Starting bot": "Starting bot",
+
+    // core/classes/bot.py
+    "Initializing bot": "Initializing bot",
+    "Initializing client": "Initializing client",
+
+    // core/classes/data.py
+    "Failed to read data": "Failed to read data",
+    "Failed to write data": "Failed to write data",
+    "Failed to remove data": "Failed to remove data",
+    "Data contains circular reference": "Data contains circular reference",
+
+    // helpers/embed.py
+    "Matter  •  Called by @{author}  •  at {date}": "Matter  •  Called by @{author}  •  at {date}",
+
+    // tasks/presence.py
+    "stars 🌌": "stars 🌌",
+
+    // plugins/
+    "/{command} command called ({author})": "/{command} command called ({author})",
+
+    // plugins/newTicket.py
+    "Create a new ticket": "Create a new ticket",
+    "New ticket by {author}": "New ticket by {author}",
+    "Ticket created successfully!": "Ticket created successfully!",
+
+    // plugins/ping.py
+    "Returns the bot's heartbeat latency.": "Returns the bot's heartbeat latency.",
+    "Failed to get server geo data": "Failed to get server geo data",
+    "- 🌍 Server Geo: {country}, {region}\n- ⏳ Latency: {latency}ms": "- 🌍 Server Geo: {country}, {region}\n- ⏳ Latency: {latency}ms",
+    "🏓 Network details": "🏓 Network details",
+    
+}

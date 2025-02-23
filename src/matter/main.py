@@ -10,6 +10,7 @@ from matter.core.classes.logger import logger
 from matter.core.tasks.presence import presence
 from matter.plugins.newTicket import newTicket
 from matter.plugins.ping import ping
+from matter.core.classes.i18n import tr
 
 
 def run() -> None:
@@ -18,20 +19,20 @@ def run() -> None:
             from uvloop import EventLoopPolicy
 
             set_event_loop_policy(policy=EventLoopPolicy())
-            logger.trace("Using uvloop event loop policy")
+            logger.trace(tr("Using uvloop event loop policy"))
         except ImportError:
-            logger.warning("Failed to import uvloop, using default event loop policy")
+            logger.warning(tr("Failed to import uvloop, using default event loop policy"))
 
-    logger.success("Starting Matter")
+    logger.success(tr("Starting Matter"))
 
-    logger.trace("Including slash commands")
+    logger.trace(tr("Including slash commands"))
     client.include(command=ping)
     client.include(command=newTicket)
 
-    logger.trace("Setting presence")
+    logger.trace(tr("Setting presence"))
     bot.listen(StartedEvent)(presence)
 
-    logger.trace("Starting bot")
+    logger.trace(tr("Starting bot"))
     bot.run()
 
 
