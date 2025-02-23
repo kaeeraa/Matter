@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "matter"
-version = "0.2.0"
+version = "0.2.1"
 description = "Matter is a free, open-source and all-in-one ticket bot for Discord"
 license = "GPL-3.0-Only"
 authors = ["kaeeraa <kaeeraa@nebula-nook.ru>"]
