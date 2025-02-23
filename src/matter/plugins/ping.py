@@ -39,10 +39,7 @@ async def ping(ctx: GatewayContext) -> None:
     Raises:
         RuntimeWarning: if couldn't fetch metadata
     """
-    logger.trace(tr("/{command} command called ({author})").format(
-        command=COMMAND_NAME,
-        author=ctx.author.username
-    ))
+    logger.trace(tr("/{command} command called ({author})").format(command=COMMAND_NAME, author=ctx.author.username))
 
     try:
         country = data.get("country", tr("Unknown"))

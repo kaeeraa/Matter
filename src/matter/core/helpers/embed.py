@@ -5,16 +5,14 @@ from typing import Optional
 
 from hikari import Color, User
 from hikari.embeds import Embed
+
 from matter.core.classes.i18n import tr
 
 EMBED_COLOR = Color.from_rgb(90, 0, 240)
-TIME_FORMAT = '%H:%M:%S'
+TIME_FORMAT = "%H:%M:%S"
 
 
-def embed(author: User,
-          title: str,
-          description: str,
-          color: Optional[Color] = EMBED_COLOR) -> Embed:
+def embed(author: User, title: str, description: str, color: Optional[Color] = EMBED_COLOR) -> Embed:
 
     _embed: Embed = Embed(
         title=title,
@@ -24,10 +22,7 @@ def embed(author: User,
 
     _footerTemplate: str = tr("Matter  •  Called by @{author}  •  at {date}")
 
-    _footerText = _footerTemplate.format(
-        author=author.username,
-        date=datetime.now().strftime(TIME_FORMAT)
-    )
+    _footerText = _footerTemplate.format(author=author.username, date=datetime.now().strftime(TIME_FORMAT))
 
     _embed.set_footer(
         text=_footerText,
