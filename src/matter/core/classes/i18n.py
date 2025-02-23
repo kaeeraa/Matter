@@ -6,6 +6,7 @@ from pyjson5 import loads
 
 from matter import ROOT
 from matter.core.classes.config import Config
+from matter.core.classes.logger import logger
 
 
 class Locale:
@@ -14,8 +15,12 @@ class Locale:
     _path: str = f"{ROOT}/configuration/lang/{_locale}.json5"
 
     def __init__(self):
-        with open(self._path, "r", encoding="utf-8") as f:
-            self.data = loads(f.read())
+        try:
+            with open(self._path, "r", encoding="utf-8") as f:
+                self.data = loads(f.read())
+        except FileNotFoundError:
+            logger.warning("Locale {} not found. Using en_US".format(self._locale))
+            self.data = {}
 
 
 _locale = Locale()
