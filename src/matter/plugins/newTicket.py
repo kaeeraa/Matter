@@ -14,10 +14,10 @@ from typing import Any
 from arc import GatewayContext, Option, slash_command
 
 from matter.core.classes.config import Config
+from matter.core.classes.i18n import tr
 from matter.core.classes.logger import logger
 from matter.core.classes.ticket import Ticket
 from matter.core.classes.tickets.ticketManager import TicketManager
-from matter.core.classes.i18n import tr
 
 COMMAND_NAME = "new"
 COMMAND_DESCRIPTION = tr("Create a new ticket")
@@ -38,10 +38,7 @@ async def newTicket(
     Returns:
         None
     """
-    logger.trace(tr("/{command} command called ({author})").format(
-        command=COMMAND_NAME,
-        author=ctx.author.username
-    ))
+    logger.trace(tr("/{command} command called ({author})").format(command=COMMAND_NAME, author=ctx.author.username))
     # Return every config
     _config: dict[str, Any] = Config().getDictionary("")
     _ticket: Ticket = TicketManager().newTicket(ctx.author, title, description)

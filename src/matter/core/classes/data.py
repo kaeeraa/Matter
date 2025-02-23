@@ -14,8 +14,8 @@ from typing import Any
 from pyjson5 import Json5EOF, decode, encode, loads
 
 from matter import ROOT
-from matter.core.classes.logger import logger
 from matter.core.classes.i18n import tr
+from matter.core.classes.logger import logger
 
 
 class Data:

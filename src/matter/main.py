@@ -6,11 +6,11 @@ from os import name
 from hikari import StartedEvent
 
 from matter.core.classes.bot import bot, client
+from matter.core.classes.i18n import tr
 from matter.core.classes.logger import logger
 from matter.core.tasks.presence import presence
 from matter.plugins.newTicket import newTicket
 from matter.plugins.ping import ping
-from matter.core.classes.i18n import tr
 
 
 def run() -> None:
