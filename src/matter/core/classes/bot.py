@@ -8,7 +8,7 @@ from matter.core.classes.i18n import tr
 from matter.core.classes.logger import logger
 
 logger.trace(tr("Initializing bot"))
-_token = Config().getDictionary("bot")["token"]
+_token: str = Config().getDictionary("bot").get("token", "")
 bot = GatewayBot(token=_token, intents=Intents.ALL)
 
 logger.trace(tr("Initializing client"))
