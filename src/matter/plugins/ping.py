@@ -18,7 +18,7 @@ from matter.core.classes.logger import logger
 from matter.core.helpers.embed import embed
 
 COMMAND_NAME = "ping"
-COMMAND_DESCRIPTION = tr("Returns the bot's heartbeat latency.")
+COMMAND_DESCRIPTION: str = tr("Returns the bot's heartbeat latency.")
 
 data: dict[str, Any] = {}
 
@@ -42,17 +42,17 @@ async def ping(ctx: GatewayContext) -> None:
     logger.trace(tr("/{command} command called ({author})").format(command=COMMAND_NAME, author=ctx.author.username))
 
     try:
-        country = data.get("country", tr("Unknown"))
-        region = data.get("city", tr("Unknown"))
-        latency = round(bot.heartbeat_latency * 1000) if bot.heartbeat_latency else tr("Unavailable")
+        country: str = data.get("country", tr("Unknown"))
+        region: str = data.get("city", tr("Unknown"))
+        latency: int | str = round(bot.heartbeat_latency * 1000) if bot.heartbeat_latency else tr("Unavailable")
 
-        description = tr("- 🌍 Server Geo: {country}, {region}\n- ⏳ Latency: {latency}ms").format(
+        description: str = tr("- 🌍 Server Geo: {country}, {region}\n- ⏳ Latency: {latency}ms").format(
             country=country, region=region, latency=latency
         )
 
         await ctx.respond(
             embed=embed(
-                ctx.author,
+                author=ctx.author,
                 title=tr("🏓 Network details"),
                 description=description,
             )
