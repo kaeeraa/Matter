@@ -4,7 +4,7 @@ Manages tickets.
 This class contains methods to create, manage and get tickets.
 """
 
-from typing import Any
+from typing import Any, Optional, cast
 
 from hikari import User
 
@@ -12,7 +12,7 @@ from matter.core.classes.data import Data
 from matter.core.classes.ticket import Ticket
 
 
-class TicketManager:
+class TicketManager(object):
     """
     Manages tickets.
 
@@ -22,16 +22,16 @@ class TicketManager:
     _data: Data
     _tickets: dict[str, Any] = {}
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._data = Data("tickets")
-        self._tickets = self._data.get("tickets")
+        self._tickets = self._data.get("tickets", {}) or {}
 
         if not self._tickets:
             self._data.put("tickets", {})
 
     def newTicket(self, author: User, title: str, description: str) -> Ticket:
 
-        _ticketsCount: int = len(self._data.get("tickets"))
+        _ticketsCount: int = len(self._tickets)
 
         _ticket = Ticket(_ticketsCount + 1, author, author.id, title, description)
 
@@ -48,16 +48,18 @@ class TicketManager:
 
         return _ticket
 
-    def getTicket(self, ticketId: int) -> Ticket | None:
+    def getTicket(self, ticketId: str) -> Optional[Ticket]:
         """Get ticket from tickets.json5
 
         Args:
-            ticketId (int): an unique ticket id
+            ticketId (str): an unique ticket id
 
         Returns:
-            Ticket | None: Ticket if exists, None if not exists
+            Optional[Ticket]: Ticket if exists, None if not exists
         """
-        return self._data.get(f"tickets.{ticketId}", None)
+        _root: dict[str, Any] = cast(dict[str, Any], self._data.get("", {}))
+
+        return _root.get("tickets", {}).get(ticketId, None)
 
     def removeTicket(self, ticketId: int) -> None:
         """Remove ticket from tickets.json5
