@@ -25,9 +25,7 @@ COMMAND_DESCRIPTION: str = tr("Create a new ticket")
 
 @slash_command(name="new", description=COMMAND_DESCRIPTION)
 async def newTicket(
-    ctx: GatewayContext,
-    title: Option[str, str] = "Ndfined",
-    description: Option[str, str] = "None"
+    ctx: GatewayContext, title: Option[str, str] = "Ndfined", description: Option[str, str] = "None"
 ) -> None:
     """
     Creates a new ticket and sends a message to the channel.
