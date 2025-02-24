@@ -19,7 +19,7 @@ class Status(Enum):
     CLOSED = "closed"
 
 
-class Ticket:
+class Ticket(object):
     """
     Ticket class.
 
@@ -28,7 +28,7 @@ class Ticket:
 
     def __init__(
         self, ticketId: int, author: User, authorId: int, title: str, description: str, status: Status = Status.OPEN
-    ):
+    ) -> None:
         self.ticketId: int = ticketId
         self.author: User = author
         self.authorId: int = authorId
@@ -38,7 +38,7 @@ class Ticket:
         self.createdAt: datetime = datetime.now()
         self.updatedAt: datetime = datetime.now()
 
-    def changeStatus(self, status: Status):
+    def changeStatus(self, status: Status) -> None:
         """
         Changes the status of the ticket to the specified status.
 
@@ -48,5 +48,5 @@ class Ticket:
         self.status = status
         self.updatedAt = datetime.now()
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Ticket({self.ticketId}, {self.title}, Status: {self.status})"
