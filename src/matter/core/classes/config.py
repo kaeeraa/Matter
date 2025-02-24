@@ -14,7 +14,7 @@ from matter import ROOT
 from matter.core.classes.logger import logger
 
 
-class Config:
+class Config(object):
     """
     The Config class is responsible for loading and providing access to
     configuration settings for the application.
@@ -32,11 +32,12 @@ class Config:
     _config: dict[str, Any] = {}
     _path: str = f"{ROOT}/configuration/settings.json5"
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._config = self._load(self._path)
 
-    def _load(self, path: str = _path) -> dict[str, Any]:
-        with open(path, "r", encoding="utf-8") as f:
+    @staticmethod
+    def _load(path: str = _path) -> dict[str, Any]:
+        with open(file=path, mode="r", encoding="utf-8") as f:
             return loads(f.read())
 
     def getString(self, key: str) -> str:
