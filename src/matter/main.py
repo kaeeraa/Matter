@@ -14,6 +14,7 @@ from matter.plugins.ping import ping
 
 
 def run() -> None:
+    """Run Matter"""
     if name != "nt":
         try:
             from uvloop import EventLoopPolicy
