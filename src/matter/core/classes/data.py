@@ -20,6 +20,7 @@ from matter.core.classes.logger import logger
 
 class Data(object):
     """Load and manipulate the data"""
+
     _partition: str
     _data: dict[str, Any]
     _path: str

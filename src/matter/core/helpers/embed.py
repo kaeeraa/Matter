@@ -12,12 +12,7 @@ EMBED_COLOR: Color = Color.from_rgb(90, 0, 240)
 TIME_FORMAT = "%H:%M:%S"
 
 
-def embed(
-    author: User,
-    title: str,
-    description: str,
-    color: Optional[Color] = EMBED_COLOR
-) -> Embed:
+def embed(author: User, title: str, description: str, color: Optional[Color] = EMBED_COLOR) -> Embed:
     """Generate embed by template
 
     Args:

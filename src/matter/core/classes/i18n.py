@@ -11,6 +11,7 @@ from matter.core.classes.logger import logger
 
 class Locale(object):
     """Find and operate with locales"""
+
     _locale: str = Config().getDictionary("general")["language"]
     data: dict[str, Any] = {}
     _path: str = f"{ROOT}/configuration/lang/{_locale}.json5"
