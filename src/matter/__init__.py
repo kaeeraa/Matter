@@ -2,5 +2,5 @@
 
 from os.path import dirname, join
 
-ROOT = dirname(__file__)
-PROJECT_ROOT = join(ROOT, "..", "..")
+ROOT: str = dirname(__file__)
+PROJECT_ROOT: str = join(ROOT, "..", "..")
