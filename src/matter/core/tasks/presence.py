@@ -4,7 +4,7 @@ from asyncio import sleep
 
 from hikari import Activity, ActivityType, StartedEvent, Status
 
-from matter.build.BuildConfig import build
+from matter.core.build.BuildConfig import build
 from matter.core.classes.bot import bot
 from matter.core.classes.i18n import tr
 
