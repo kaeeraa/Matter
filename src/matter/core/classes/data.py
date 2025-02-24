@@ -28,7 +28,7 @@ class Data(object):
         self._partition = partition
         self._path = f"{ROOT}/data/{self._partition}.json5"
 
-        with open(self._path, "r", encoding="utf-8") as f:
+        with open(file=self._path, mode="r", encoding="utf-8") as f:
             try:
                 self._data = loads(f.read())
             except Json5EOF:
@@ -37,7 +37,7 @@ class Data(object):
                 Path(self._path).touch()
 
     def _write(self) -> None:
-        with open(self._path, "w", encoding="utf-8") as f:
+        with open(file=self._path, mode="w", encoding="utf-8") as f:
             f.write(encode(self._data))
 
     @logger.catch(level="ERROR", message=tr("Failed to read data"))
