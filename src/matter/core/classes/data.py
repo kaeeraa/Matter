@@ -18,12 +18,13 @@ from matter.core.classes.i18n import tr
 from matter.core.classes.logger import logger
 
 
-class Data:
+class Data(object):
+    """Load and manipulate the data"""
     _partition: str
     _data: dict[str, Any]
     _path: str
 
-    def __init__(self, partition: str):
+    def __init__(self, partition: str) -> None:
         self._partition = partition
         self._path = f"{ROOT}/data/{self._partition}.json5"
 
@@ -40,7 +41,7 @@ class Data:
             f.write(encode(self._data))
 
     @logger.catch(level="ERROR", message=tr("Failed to read data"))
-    def get(self, path: str, default: Any = None) -> Any:
+    def get(self, path: str, default: str | int | dict[str, Any] | None = None) -> str | int | dict[str, Any] | None:
         return self._data.get(path, default)
 
     @logger.catch(level="ERROR", message=tr("Failed to write data"))
