@@ -41,7 +41,7 @@ class Data(object):
             f.write(encode(self._data))
 
     @logger.catch(level="ERROR", message=tr("Failed to read data"))
-    def get(self, path: str, default: str | int | dict[str, Any] | None = None) -> str | int | dict[str, Any] | None:
+    def get(self, path: str, default: Any | None = None) -> Any | None:
         return self._data.get(path, default)
 
     @logger.catch(level="ERROR", message=tr("Failed to write data"))
