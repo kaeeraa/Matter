@@ -1,6 +1,6 @@
 """This module contains the argument parser for the bot."""
 
-from argparse import ArgumentParser
+from argparse import ArgumentParser, Namespace
 
 parser = ArgumentParser(
     prog="Matter bot",
@@ -12,4 +12,4 @@ parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose
 parser.add_argument("-vv", "--vomit", action="store_true", help="Enable trace logging", default=False)
 
 
-args = parser.parse_args()
+args: Namespace = parser.parse_args()
