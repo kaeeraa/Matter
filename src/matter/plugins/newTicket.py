@@ -39,7 +39,7 @@ async def newTicket(
         None
     """
     logger.trace(tr("/{command} command called ({author})").format(command=COMMAND_NAME, author=ctx.author.username))
-    # Return every config
+    # Return config fully
     _config: dict[str, Any] = Config().getDictionary("")
     _ticket: Ticket = TicketManager().newTicket(ctx.author, title, description)
 
