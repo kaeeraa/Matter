@@ -38,12 +38,18 @@ logger.add(
     "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
     "<level>{message}</level>",
     level=level,
-    serialize=False,  # Enable log serialization
-    colorize=False,  # Disable colorization in file logs
-    rotation="10 MB",  # Rotate logs after reaching 10 MB
-    retention="7 days",  # Retain logs for 7 days
-    compression="zip",  # Compress rotated logs using zip
-    enqueue=True,  # Enable asynchronous logging
+    # Enable log serialization
+    serialize=False,
+    # Disable colorization in file logs
+    colorize=False,
+    # Rotate logs after reaching 10 MB
+    rotation="10 MB",
+    # Retain logs for 7 days
+    retention="7 days",
+    # Compress rotated logs using zip
+    compression="zip",
+    # Enable asynchronous logging
+    enqueue=True,
 )
 
 # Add a stdout handler for console output
@@ -54,5 +60,6 @@ logger.add(
     "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
     "<level>{message}</level>",
     level=level,
-    enqueue=True,  # Enable asynchronous logging
+    # Enable asynchronous logging
+    enqueue=True,
 )
