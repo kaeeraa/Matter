@@ -30,6 +30,7 @@ scipy-stubs = "^1.14.1.3"
 arc = { extras = ["stubs"], version = "^1.0" }
 pyjson5 = "^1.6.7"
 tomli = "^2.2.1"
+mypy = "^1.15.0"
 
 [tool.poetry.extras]
 uvloop = ["uvloop"]
