@@ -1,0 +1,2 @@
+ROOT: str
+PROJECT_ROOT: str
