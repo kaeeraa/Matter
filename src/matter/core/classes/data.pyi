@@ -1,6 +1,5 @@
 from typing import Any
 
-
 class Data(object):
     def __init__(self, partition: str) -> None: ...
     def get(self, path: str, default: Any | None = None) -> Any | None: ...

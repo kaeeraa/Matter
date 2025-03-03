@@ -1,6 +1,5 @@
 from typing import Any
 
-
 class Config(object):
     def __init__(self) -> None: ...
     def getString(self, key: str) -> str: ...
