@@ -1,27 +1,17 @@
 {
     general: {
         // Settings for the controller
-        "per-guild-settings": true, // Enable per-guild settings (aka ignore bot.brain settings)
-        "ignore-hash": false, // Continue without checking hash
         language: "en_US",
     },
 
     bot: {
-        token: "", // Bot token
-        owner: {
-            id: "", // Bot owner ID
-        },
-
+        token: "",
         logging: {
             enabled: true, // Enable logging (toggles file logging)
             level: "INFO", // Logging level for console (DEBUG, INFO, WARNING, ERROR, CRITICAL)
         },
-
-        // Enable brain (u cant use youtube shorts mode)
         brain: {
             tickets: {
-                enabled: true, // Enable ticket system (joke, thats main feature of this bot xd) (fr, this wont work)
-
                 // Ticket settings
                 category_id: "", // Ticket category ID (will support threads later)
 
