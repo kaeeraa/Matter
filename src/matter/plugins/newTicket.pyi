@@ -1,4 +1,4 @@
-from arc import GatewayContext as GatewayContext, Option as Option
+from arc import GatewayContext as GatewayContext, Option
 
 COMMAND_NAME: str
 COMMAND_DESCRIPTION: str

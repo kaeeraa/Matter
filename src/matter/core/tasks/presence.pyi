@@ -1,4 +1,4 @@
-from hikari import StartedEvent as StartedEvent
+from hikari import StartedEvent
 
 
 async def presence(event: StartedEvent) -> None: ...
