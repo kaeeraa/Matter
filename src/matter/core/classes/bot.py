@@ -1,6 +1,7 @@
 """This module contains the bot and client initialization logic."""
 
 from typing import Any
+
 from arc import GatewayClient
 from hikari import GatewayBot, Intents
 

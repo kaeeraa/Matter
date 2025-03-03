@@ -6,7 +6,7 @@ configuration directory. The configuration is loaded into a dictionary
 object for use throughout the application.
 """
 
-from typing import TypeVar, Any
+from typing import Any, TypeVar
 
 from pyjson5 import loads
 
