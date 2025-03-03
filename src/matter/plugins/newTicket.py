@@ -40,7 +40,7 @@ async def newTicket(
     """
     logger.trace(tr("/{command} command called ({author})").format(command=COMMAND_NAME, author=ctx.author.username))
     # Return config fully
-    _config: dict[str, Any] = Config().getDictionary("")
+    _config: dict[str, Any] = Config().getDict("", {})
     _ticket: Ticket = TicketManager().newTicket(author=ctx.author, title=title, description=description)
 
     if guild := ctx.get_guild():
