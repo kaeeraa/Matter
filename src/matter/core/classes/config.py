@@ -6,12 +6,14 @@ configuration directory. The configuration is loaded into a dictionary
 object for use throughout the application.
 """
 
-from typing import Any
+from typing import TypeVar, Any
 
 from pyjson5 import loads
 
 from matter import ROOT
 from matter.core.classes.logger import logger
+
+T = TypeVar("T", str, dict[str, Any], bool, int)
 
 
 class Config(object):
@@ -40,18 +42,29 @@ class Config(object):
         with open(file=path, mode="r", encoding="utf-8") as f:
             return loads(f.read())
 
-    def getString(self, key: str) -> str:
-        value: str = self._config.get(key, "")
+    def _get(self, key: str, default: T) -> T:
+        value: Any | None = self._config.get(key)
 
-        if value == "":
-            logger.error("Key '{}' is undefined", key)
+        if not isinstance(value, type(default)):
+            logger.error(
+                "Key '%s' has invalid type (excepted %s, got %s). Using default.",
+                key,
+                type(default).__name__,
+                type(value).__name__,
+            )
+            return default
 
+        # type(value) == T
         return value
 
-    def getDictionary(self, key: str) -> dict[str, Any]:
-        value: dict[str, Any] = self._config.get(key, {})
+    def getStr(self, key: str, default: str) -> str:
+        return self._get(key, default)
 
-        if value == {}:
-            logger.error("Key '{}' is undefined", key)
+    def getDict(self, key: str, default: dict[str, Any]) -> dict[str, Any]:
+        return self._get(key, default)
 
-        return value
+    def getBool(self, key: str, default: bool) -> bool:
+        return self._get(key, default)
+
+    def getInt(self, key: str, default: int) -> int:
+        return self._get(key, default)

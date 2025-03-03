@@ -1,0 +1,71 @@
+steps:
+- type: bash
+  command: cd {{repo_dir}}
+- type: create-env
+- type: bash
+  command: poetry install
+- type: instruction
+  text: |
+    <configuration>
+    general:
+      language: "en_US"
+    bot:
+      token: (TOKEN github variable)
+      logging:
+        enable: true
+        level: "TRACE"
+      brain: dont_change
+    </configuration>
+
+    <run>
+    Described diff behaviours
+
+    Success behaviour:
+      Doesn't crash first 20s, ^C stops without Error/Critical logs
+    Fault behaviour:
+      Any unexcepted behaviour
+    </run>
+
+    <info>
+    Prepare for running || run
+
+    Installs with:
+      `poetry install --all-extras --without=dev`
+    Runs with:
+      `poetry run "python3" "src/matter/main.py"`
+    </info>
+
+    <test>
+    Perform tests with `flake8`, `flake8-bugbear` `pylint`
+
+    Installs with:
+      `poetry install --all-extras --with=dev`
+    Runs with:
+      `poetry run "flake8" "."`
+      `poetry run "pylint" "."`
+    </test>
+
+    <refactor>
+    Refactor project
+
+    Installs with:
+      `poetry install --all-extras --with=dev`
+    Runs with:
+      `poetry run "black" "."`
+      `poetry run "isort" "."`
+    </refactor>
+
+    <task>
+    1. Load config      | \<configuration\>
+    2. Prepare and run  | \<info\>
+    3. Check behaviour  | \<run\>
+
+    4. Continue if previous steps Success
+
+    5. Perform tests    | \<test\>
+
+    6. Continue if previous steps Success
+
+    7. Perform Refactor | \<refactor\>
+
+    8. If previous steps Success: pass true
