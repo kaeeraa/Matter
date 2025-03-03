@@ -1,4 +1,4 @@
-from hikari import Color, User as User
+from hikari import Color, User
 from hikari.embeds import Embed
 
 EMBED_COLOR: Color
