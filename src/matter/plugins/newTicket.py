@@ -1,17 +1,7 @@
-"""
-A slash command to create a new ticket.
+"""A slash command to create a new ticket."""
 
-This command allows users to create new tickets directly from Discord.
-It will create a new ticket in the database and send a message to the channel
-with the ticket details.
-
-Example:
-    /new test ticket This is a test ticket
-"""
-
-from typing import Any
-
-from arc import GatewayContext, Option, slash_command
+from typing import Any, Annotated
+from arc import GatewayContext, slash_command
 
 from matter.core.classes.config import Config
 from matter.core.classes.i18n import tr
@@ -25,7 +15,7 @@ COMMAND_DESCRIPTION: str = tr("Create a new ticket")
 
 @slash_command(name="new", description=COMMAND_DESCRIPTION)
 async def newTicket(
-    ctx: GatewayContext, title: Option[str, str] = "Ndfined", description: Option[str, str] = "None"
+    ctx: GatewayContext, title: Annotated[str, str] = "Ndfined", description: Annotated[str, str] = "None"
 ) -> None:
     """
     Creates a new ticket and sends a message to the channel.
@@ -39,7 +29,7 @@ async def newTicket(
         None
     """
     logger.trace(tr("/{command} command called ({author})").format(command=COMMAND_NAME, author=ctx.author.username))
-    # Return config fully
+
     _config: dict[str, Any] = Config().getDict("", {})
     _ticket: Ticket = TicketManager().newTicket(author=ctx.author, title=title, description=description)
 
@@ -57,4 +47,5 @@ async def newTicket(
 
         await ctx.respond(tr("Ticket created successfully!"))
         return
+
     raise RuntimeError()
