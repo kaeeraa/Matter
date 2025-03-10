@@ -1,6 +1,7 @@
 """A slash command to create a new ticket."""
 
-from typing import Any, Annotated
+from typing import Annotated, Any
+
 from arc import GatewayContext, slash_command
 
 from matter.core.classes.config import Config
