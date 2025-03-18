@@ -5,15 +5,18 @@ from typing import Any
 from pyjson5 import loads
 
 from matter import ROOT
-from matter.core.classes.config import Config
+from matter.core.classes.data import Data
 from matter.core.classes.logger import logger
 
 
 class Locale(object):
     """Find and operate with locales"""
 
-    # general.locale || {}.locale || *.en_US
-    _locale: str = Config().getDict("general", {}).get("locale", "en_US")
+    # general.language || {}.language || *.en_US
+    if (_general := Data(isConfig=True).getDict("general", {})) == {}:
+        logger.error("General section in config is empty. Using default language.")
+
+    _locale: str = _general.get("language", "en_US")
 
     data: dict[str, Any] = {}
     _path: str = f"{ROOT}/configuration/lang/{_locale}.json5"
@@ -31,12 +34,5 @@ _locale = Locale()
 
 
 def tr(text: str) -> str:
-    """Translate text, return the same text if key is not found
-
-    Args:
-        text (str): Text to translate
-
-    Returns:
-        str: Translated text
-    """
+    """Translate text, return the same text if key is not found"""
     return _locale.data.get(text, text)
