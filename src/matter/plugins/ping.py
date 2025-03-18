@@ -29,16 +29,9 @@ except URLError:
     logger.error(tr("Failed to get server geo data"))
 
 
-@slash_command(name="ping", description=COMMAND_DESCRIPTION)
+@slash_command(name=COMMAND_NAME, description=COMMAND_DESCRIPTION)
 async def ping(ctx: GatewayContext) -> None:
-    """/ping command
-
-    Args:
-        ctx (GatewayContext): call context
-
-    Raises:
-        RuntimeWarning: if couldn't fetch metadata
-    """
+    """/ping command"""
     logger.trace(tr("/{command} command called ({author})").format(command=COMMAND_NAME, author=ctx.author.username))
 
     try:
