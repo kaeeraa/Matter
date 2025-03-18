@@ -1,6 +1,7 @@
 from typing import Annotated
 
-from arc import GatewayContext as GatewayContext, StrParams
+from arc import GatewayContext as GatewayContext
+from arc import StrParams
 
 COMMAND_NAME: str
 COMMAND_DESCRIPTION: str

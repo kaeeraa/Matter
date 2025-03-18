@@ -19,9 +19,7 @@ class Status(Enum):
 class Ticket(object):
     """This class represents a ticket and its attributes."""
 
-    def __init__(
-        self, ticketId: int, topic: str, author: User, status: Status = Status.OPEN
-    ) -> None:
+    def __init__(self, ticketId: int, topic: str, author: User, status: Status = Status.OPEN) -> None:
         self.ticketId: int = ticketId
         self.channel: GuildTextChannel
         self.topic: str = topic

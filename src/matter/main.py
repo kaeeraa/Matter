@@ -9,8 +9,8 @@ from matter.core.classes.bot import bot, client
 from matter.core.classes.i18n import tr
 from matter.core.classes.logger import logger
 from matter.core.tasks.presence import presence
-from matter.plugins.tickets.new import new
 from matter.plugins.ping import ping
+from matter.plugins.tickets.new import new
 
 
 def run() -> None:

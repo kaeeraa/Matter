@@ -2,7 +2,8 @@ from datetime import datetime
 from enum import Enum
 from typing import Any, Optional
 
-from hikari import GuildTextChannel, User as User
+from hikari import GuildTextChannel
+from hikari import User as User
 
 class Status(Enum):
     OPEN = "open"

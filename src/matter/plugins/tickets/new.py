@@ -2,7 +2,7 @@
 
 from typing import Annotated, Any
 
-from arc import GatewayContext, slash_command, StrParams
+from arc import GatewayContext, StrParams, slash_command
 from hikari import GuildTextChannel
 
 from matter.core.classes.data import Data
