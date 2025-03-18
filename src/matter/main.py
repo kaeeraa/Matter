@@ -3,13 +3,13 @@
 from asyncio import set_event_loop_policy
 from os import name
 
-from hikari import StartedEvent
+from hikari import StartedEvent, UnauthorizedError
 
 from matter.core.classes.bot import bot, client
 from matter.core.classes.i18n import tr
 from matter.core.classes.logger import logger
 from matter.core.tasks.presence import presence
-from matter.plugins.newTicket import newTicket
+from matter.plugins.tickets.new import new
 from matter.plugins.ping import ping
 
 
@@ -28,13 +28,16 @@ def run() -> None:
 
     logger.trace(tr("Including slash commands"))
     client.include(command=ping)
-    client.include(command=newTicket)
+    client.include(command=new)
 
     logger.trace(tr("Setting presence"))
     bot.listen(StartedEvent)(presence)
 
     logger.trace(tr("Starting bot"))
-    bot.run()
+    try:
+        bot.run()
+    except UnauthorizedError:
+        logger.error(tr("Couldn't login in Discord. Is token valid?"))
 
 
 if __name__ == "__main__":
